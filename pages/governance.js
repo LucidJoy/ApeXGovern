@@ -2,11 +2,12 @@ import React, { useContext, useEffect } from "react";
 import Image from "next/image";
 
 import { Background, Card, Navbar, Task } from "@/components";
-import { eventspic } from "@/assets";
+import { eventspic, fluid1, fluid2, fluid3 } from "@/assets";
 import ApeContext from "@/context/ApeContext";
 
 const governance = () => {
-  const { winEvent, setWinEvent } = useContext(ApeContext);
+  const { winEvent, setWinEvent, fullfill, setFullfill } =
+    useContext(ApeContext);
 
   useEffect(() => {
     console.log(winEvent);
@@ -34,22 +35,22 @@ const governance = () => {
 
             <div className='flex items-center justify-between mt-[20px] transition-all duration-150 ease-in-out'>
               <Image
-                src={eventspic}
-                className={`object-fill rounded-[5px] cursor-pointer`}
+                src={fluid1}
+                className={`object-fill w-[100px] h-[100px] rounded-[5px] cursor-pointer`}
                 width={100}
                 height={100}
                 onClick={() => setWinEvent("1")}
               />
               <Image
-                src={eventspic}
-                className={`object-contain rounded-[5px] cursor-pointer`}
+                src={fluid2}
+                className={`object-fill w-[100px] h-[100px] rounded-[5px] cursor-pointer`}
                 width={100}
                 height={100}
                 onClick={() => setWinEvent("2")}
               />
               <Image
-                src={eventspic}
-                className={`object-contain rounded-[5px] cursor-pointer`}
+                src={fluid3}
+                className={`object-fill w-[100px] h-[100px] rounded-[5px] cursor-pointer`}
                 width={100}
                 height={100}
                 onClick={() => setWinEvent("3")}
@@ -65,11 +66,17 @@ const governance = () => {
 
           <div className='flex flex-col gap-[10px]'>
             <div className='flex flex-row gap-[10px]'>
-              <Task desc='Staked 50000 ape coin' points={250} tick={true} />
+              <Task
+                desc='Staked 50000 ape coin'
+                points={250}
+                tick={true}
+                id={1}
+              />
 
               <button
                 type='button'
                 className='text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:outline-none font-semibold rounded-lg text-[13px] px-5 py-1 text-center w-fit '
+                onClick={() => setFullfill(true)}
               >
                 Fulfill
               </button>
@@ -80,11 +87,13 @@ const governance = () => {
                 desc='Participated in 10% proposals'
                 points={500}
                 tick={true}
+                id={2}
               />
 
               <button
                 type='button'
                 className='text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:outline-none font-semibold rounded-lg text-[13px] px-5 py-1 text-center w-fit '
+                onClick={() => setFullfill(true)}
               >
                 Fulfill
               </button>
@@ -95,11 +104,13 @@ const governance = () => {
                 desc='Followed our social handles'
                 points={150}
                 tick={false}
+                id={3}
               />
 
               <button
                 type='button'
                 className='text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:outline-none font-semibold rounded-lg text-[13px] px-5 py-1 text-center w-fit '
+                onClick={() => setFullfill(true)}
               >
                 Fulfill
               </button>

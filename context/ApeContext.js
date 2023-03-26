@@ -19,6 +19,7 @@ export const ApeProvider = ({ children }) => {
     username: "",
   });
   const [winEvent, setWinEvent] = useState("");
+  const [fullfill, setFullfill] = useState(false);
 
   const [loading, setLoading] = useState(false);
   const [nftid, setNftid] = useState("");
@@ -255,6 +256,8 @@ export const ApeProvider = ({ children }) => {
         setWinEvent,
         addToLedger,
         getUserAuth,
+        fullfill,
+        setFullfill,
       }}
     >
       {children}
