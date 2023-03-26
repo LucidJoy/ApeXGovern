@@ -77,7 +77,7 @@ const Navbar = () => {
                   onClick={async () => {
                     setCurrentPage("governance");
                     navigate.push("/governance");
-                    await addToLedger(1);
+                    // await addToLedger(1);
                   }}
                 >
                   Governance

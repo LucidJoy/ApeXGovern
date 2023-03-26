@@ -1,4 +1,3 @@
-import { useContext, useEffect } from "react";
 import Head from "next/head";
 import Image from "next/image";
 const { Revise } = require("revise-sdk");

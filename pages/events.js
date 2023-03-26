@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import Image from "next/image";
 
 import { Navbar, Background, Task, EventsCard, Modal } from "@/components";
-import { eventspic, img1 } from "@/assets";
+import { eventspic, social, staking, treasure} from "@/assets";
 import ApeContext from "@/context/ApeContext";
 
 const Events = () => {
@@ -27,22 +27,16 @@ const Events = () => {
 
             <div className='flex flex-col gap-[8px]'>
               <EventsCard
-                image={eventspic}
-                desc='Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus
-          praesentium veniam perspiciatis officia modi, velit placeat. (30
-          words)'
+                image={social}
+                desc='The user who reaches the maximum number of users off-chain (like via discord, twitter, instagram) and add them to BAYC DAO using referrals wins the event.This event is valid till 8th April, 2023'
               />
               <EventsCard
-                image={eventspic}
-                desc='Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus
-          praesentium veniam perspiciatis officia modi, velit placeat. (30
-          words)'
+                image={staking}
+                desc='More you stake, better is the chance for you to win the event. Put your money to work and earn interest just by staking them to any of the pools available. Help ApeCoin scale with own benefits. This event is valid till 30th April, 2023'
               />
               <EventsCard
-                image={eventspic}
-                desc='Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus
-          praesentium veniam perspiciatis officia modi, velit placeat. (30
-          words)'
+                image={treasure}
+                desc='Take part in the exciting event of tresure hunt where you solve interesting puzzles and problems related to ApeCoin and be eligible to win this event and exciting prizes. This event is valid till 15th April, 2023.'
               />
             </div>
           </>
