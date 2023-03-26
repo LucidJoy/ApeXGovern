@@ -14,8 +14,8 @@ const Card = () => {
           <p className='font-normal text-gray-400'>Name:</p>
           <p className='font-normal text-gray-400'>Rank:</p>
           <p className='font-normal text-gray-400'>Voting Weight:</p>
-          <p className='font-normal text-gray-400'>Total Achievemnts:</p>
-          <p className='font-normal text-gray-400'>Array of Achievemnts:</p>
+          <p className='font-normal text-gray-400'>Total Achievements:</p>
+          <p className='font-normal text-gray-400'>Achievements:</p>
         </div>
       </div>
     </div>
