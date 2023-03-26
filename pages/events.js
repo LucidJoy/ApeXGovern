@@ -6,7 +6,7 @@ import { eventspic, social, staking, treasure} from "@/assets";
 import ApeContext from "@/context/ApeContext";
 
 const Events = () => {
-  const { isModal, setIsModal } = useContext(ApeContext);
+  const { isModal, setIsModal, nftid } = useContext(ApeContext);
 
   return (
     <>

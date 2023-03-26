@@ -1,13 +1,12 @@
 import React, { useState, useEffect, createContext } from "react";
-import {ethers} from "ethers";
+import { ethers } from "ethers";
 import Web3Modal from "web3modal";
-
 import { abi } from "./ApeCoinAbi";
-import ledger from "./Ape.json"
+import ledger from "./Ape.json";
 
 const ledgerContractAddress = "0xd075D1647532925bc49f029956611746A9c25Ca0";
 
-import Moralis from 'moralis';
+import Moralis from "moralis";
 
 const ApeContext = createContext({});
 
@@ -19,10 +18,10 @@ export const ApeProvider = ({ children }) => {
     name: "",
     username: "",
   });
-
-
+  const [winEvent, setWinEvent] = useState("");
 
   const [loading, setLoading] = useState(false);
+  const [nftid, setNftid] = useState("");
   const [apeStake, setApeStake] = useState("");
   const [apeBalance, setApeBalance] = useState("");
   const [apeNftBalance, setApeNftBalance] = useState("");
@@ -63,7 +62,6 @@ export const ApeProvider = ({ children }) => {
     return accounts[0];
   };
 
-
   const addToLedger = async (nft) => {
     const ledgerAbi = ledger.abi;
     if (window.ethereum) {
@@ -90,7 +88,6 @@ export const ApeProvider = ({ children }) => {
     }
   };
 
-    
   const getUserAuth = async () => {
     const ledgerAbi = ledger.abi;
 
@@ -117,9 +114,9 @@ export const ApeProvider = ({ children }) => {
       return txRes;
     }
   };
-  
+
   const getApeStake = async () => {
-    const apeAbi = abi.apeAbi;  
+    const apeAbi = abi.apeAbi;
     const CONTRACT_ADDRESS = "0xeF37717B1807a253c6D140Aca0141404D23c26D4";
 
     if (window.ethereum) {
@@ -205,25 +202,36 @@ export const ApeProvider = ({ children }) => {
 
   const getNftTransfersByWallet = async () => {
     try {
-        await Moralis.start({
-          apiKey: "ea7RIctgYCrticyh409mE0xSQi8nby1hsbLkL4zfopadb6ett7i6mPTDfAeHRSRD"
-        });
-      
-        const response = await Moralis.EvmApi.nft.getWalletNFTTransfers({
-          "chain": "0x1",
-          "format": "decimal",
-          "direction": "both",
-          "address": walletAddress
-        });
-      
-        console.log(response.raw);
-        setApeNftTransfer(response.raw)
+      await Moralis.start({
+        apiKey:
+          "ea7RIctgYCrticyh409mE0xSQi8nby1hsbLkL4zfopadb6ett7i6mPTDfAeHRSRD",
+      });
+      let response;
+      response = await Moralis.EvmApi.nft.getWalletNFTTransfers({
+        chain: "0x1",
+        format: "decimal",
+        direction: "both",
+        address: walletAddress,
+      });
 
-        return response.raw;
-      } catch (e) {
-        console.error(e);
-      }
-  }
+      console.log(response.raw);
+      // setApeNftTransfer(response.raw);
+
+      // response = await Moralis.EvmApi.nft.getWalletNFTTransfers({
+      //   chain: "0x1",
+      //   format: "decimal",
+      //   direction: "both",
+      //   address: currentAccount,
+      // });
+
+      // console.log(response.raw);
+      // setApeNftTransfer(response.raw);
+
+      return response.raw;
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   return (
     <ApeContext.Provider
@@ -237,12 +245,16 @@ export const ApeProvider = ({ children }) => {
         connectWallet,
         isModal,
         setIsModal,
+        nftid,
+        setNftid,
         currentPage,
         setCurrentPage,
         inputFields,
         setInputFields,
+        winEvent,
+        setWinEvent,
         addToLedger,
-        getUserAuth
+        getUserAuth,
       }}
     >
       {children}
