@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import Image from "next/image";
 
-import { eventspic, staking } from "@/assets";
+import { eventspic, ape } from "@/assets";
 import { Leaderboard } from ".";
 import ApeContext from "@/context/ApeContext";
 
@@ -9,7 +9,7 @@ const Modal = () => {
   const { isModal, setIsModal } = useContext(ApeContext);
 
   return (
-    <div className='bg-[#656565] bg-opacity-10 backdrop-blur-[100px] rounded-[10px] text-white border border-gray-600 w-full h-full py-[20px] flex flex-col items-center '>
+    <div className='bg-[#656565] bg-opacity-10 backdrop-blur-[100px] rounded-[10px] text-white border border-gray-600 w-full h-[600px] py-[20px] flex flex-col items-center '>
       <button className='absolute right-0 pr-[20px]'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
@@ -26,7 +26,7 @@ const Modal = () => {
         </svg>
       </button>
 
-      <Image src={staking} width={150} height={150} className='rounded-lg' />
+      <Image src={ape} width={150} height={150} className='rounded-lg' />
 
       <p className='uppercase text-blue-500 text-[25px] font-semibold drop-shadow-lg shadow-black mt-[15px]'>
         Leaderboard
