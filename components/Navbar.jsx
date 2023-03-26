@@ -22,21 +22,23 @@ const Navbar = () => {
     <div>
       <nav className='bg-[#27335966] bg-opacity-10 px-2 sm:px-4 py-3 fixed w-full top-0 left-0 border-b border-gray-200 dark:border-gray-600 z-50'>
         <div className='container flex flex-wrap items-center justify-between mx-auto'>
-          <a href='https://flowbite.com/' className='flex items-center'>
-            <div className='flex flex-row items-center justify-center'>
-              <Image
-                src={apeicon}
-                className='mr-3 sm:h-9 stroke-white'
-                height={24}
-                width={24}
-                style={{ stroke: "#fff" }}
-                alt='Flowbite Logo'
-              />
-              <span className='self-center text-xl font-normal whitespace-nowrap dark:text-white'>
-                Ape X Govern
-              </span>
-            </div>
-          </a>
+          <div
+            className='flex flex-row items-center justify-center cursor-pointer'
+            onClick={() => navigate.push("/")}
+          >
+            <Image
+              src={apeicon}
+              className='mr-3 sm:h-9 stroke-white'
+              height={24}
+              width={24}
+              style={{ stroke: "#fff" }}
+              alt='Flowbite Logo'
+            />
+            <span className='self-center text-xl font-normal whitespace-nowrap dark:text-white'>
+              Ape X Govern
+            </span>
+          </div>
+
           <div className='flex md:order-2'>
             <button
               type='button'

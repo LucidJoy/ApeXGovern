@@ -10,6 +10,7 @@ export const ApeProvider = ({ children }) => {
     name: "",
     username: "",
   });
+  const [winEvent, setWinEvent] = useState("");
 
   const connectWallet = async () => {
     if (!window.ethereum) return alert("Please install MetaMask.");
@@ -34,6 +35,8 @@ export const ApeProvider = ({ children }) => {
         setCurrentPage,
         inputFields,
         setInputFields,
+        winEvent,
+        setWinEvent,
       }}
     >
       {children}

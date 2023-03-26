@@ -14,7 +14,7 @@ const Events = () => {
 
       <div className='absolute z-30 flex flex-col overflow-x-hidden mt-[65px] nav-height-screen w-full items-center px-[60px] text-white justify-center'>
         {isModal && (
-          <div className='w-[700px] h-[500px] absolute z-20'>
+          <div className='w-[600px] h-[600px] absolute z-20'>
             <Modal />
           </div>
         )}
