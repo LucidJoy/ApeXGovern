@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap");
+
+* {
+  font-family: "Roboto Mono", monospace;
+}
+
+.blue-glassmorphism {
+  background: #27335966;
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+}
+
+/* white glassmorphism */
+.white-glassmorphism {
+  background: rgba(0, 0, 0, 0.39);
+  backdrop-filter: blur(80px);
+  -webkit-backdrop-filter: blur(80px);
+}
+
+.nav-height-screen {
+  height: calc(100vh - 65px);
+}
