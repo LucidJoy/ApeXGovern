@@ -1,4 +1,13 @@
 import React, { useState, useEffect, createContext } from "react";
+import { ethers } from "ethers";
+import Web3Modal from "web3modal";
+
+import { abi } from "./ApeCoinAbi";
+import ledger from "./Ape.json"
+
+const ledgerContractAddress = "0x729c1b5a649a7BC8488f4d6a67EDcfA48a01Df67";
+
+import Moralis from 'moralis';
 
 const ApeContext = createContext({});
 
@@ -10,6 +19,11 @@ export const ApeProvider = ({ children }) => {
     name: "",
     username: "",
   });
+
+  const [apeStake, setApeStake] = useState("");
+  const [apeBalance, setApeBalance] = useState("");
+  const [apeNftBalance, setApeNftBalance] = useState("");
+  const [apeNftTransfer, setApeNftTransfer] = useState([]);
 
   const checkIfWalletIsConnected = async () => {
     try {
@@ -46,6 +60,60 @@ export const ApeProvider = ({ children }) => {
     return accounts[0];
   };
 
+
+  const addToLedger = async () => {
+    const ledgerAbi = ledger.abi;
+    if (window.ethereum) {
+      const web3Modal = new Web3Modal();
+      const connection = await web3Modal.connect();
+      const provider = new ethers.providers.Web3Provider(connection);
+      const signer = provider.getSigner();
+
+      const contract = new ethers.Contract(
+        ledgerContractAddress,
+        ledgerAbi,
+        signer
+      );
+
+      const txRes = await contract.addToLedger(currentAccount, nft, {
+        gasLimit: 5000000,
+      });
+
+      setLoading(true);
+      await txRes.wait();
+      setLoading(false);
+
+      console.log(txRes);
+    }
+  };
+
+    
+  const getUserAuth = async () => {
+    const ledgerAbi = ledger.abi;
+
+    if (window.ethereum) {
+      const web3Modal = new Web3Modal();
+      const connection = await web3Modal.connect();
+      const provider = new ethers.providers.Web3Provider(connection);
+      //   const signer = provider.getSigner();
+
+      const apeCoinContract = new ethers.Contract(
+        ledgerContractAddress,
+        ledgerAbi,
+        provider
+      );
+
+      const txRes = await apeCoinContract.isAuthenticated(currentAccount);
+
+      setLoading(true);
+      await txRes.wait();
+      setLoading(false);
+
+      console.log(txRes);
+
+      return txRes;
+    }
+  };
   
   const getApeStake = async () => {
     const apeAbi = abi.apeAbi;
@@ -167,6 +235,8 @@ export const ApeProvider = ({ children }) => {
         setCurrentPage,
         inputFields,
         setInputFields,
+        addToLedger,
+        getUserAuth
       }}
     >
       {children}
