@@ -1,11 +1,32 @@
+import { useContext, useEffect } from "react";
 import Head from "next/head";
 import Image from "next/image";
 
 import { Background, Navbar } from "@/components";
 import { apecoin_round, apeicon } from "@/assets";
-// import Navbar from "@/components/Navbar";
+import ApeContext from "@/context/ApeContext";
 
 export default function Home() {
+  const { inputFields, setInputFields } = useContext(ApeContext);
+
+  const handleNameChange = (event) => {
+    setInputFields({
+      ...inputFields,
+      name: event.target.value,
+    });
+  };
+
+  const handleUsernameChange = (event) => {
+    setInputFields({
+      ...inputFields,
+      username: event.target.value,
+    });
+  };
+
+  // useEffect(() => {
+  //   console.log(inputFields);
+  // }, [inputFields]);
+
   return (
     <>
       <Head>
@@ -25,44 +46,50 @@ export default function Home() {
 
           <div>
             <label
-              for='first_name'
+              htmlFor='name'
               className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
             >
               Name
             </label>
             <input
               type='text'
-              id='first_name'
+              id='name'
+              name='name'
+              value={inputFields.name}
               className='border text-sm rounded-lg block min-w-[250px] p-2.5 bg-gray-700 bg-opacity-0 dark:border-gray-600 placeholder-gray-500 text-white focus:outline-none'
               placeholder='John'
               required
+              onChange={(e) => handleNameChange(e)}
             />
           </div>
 
           <div>
             <label
-              for='website-admin'
-              class='block mb-2 text-sm font-medium text-gray-900 dark:text-white mt-[15px]'
+              htmlFor='username'
+              className='block mb-2 text-sm font-medium text-gray-900 dark:text-white mt-[15px]'
             >
               Username
             </label>
 
-            <div class='flex'>
-              <span class='inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600'>
+            <div className='flex'>
+              <span className='inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600'>
                 @
               </span>
               <input
                 type='text'
-                id='website-admin'
-                class='border text-sm rounded-tr-lg rounded-br-lg block min-w-[218px] p-2.5 bg-gray-700 bg-opacity-0 dark:border-gray-600 placeholder-gray-500 text-white focus:outline-none'
+                id='username'
+                name='username'
+                value={inputFields.username}
+                className='border text-sm rounded-tr-lg rounded-br-lg block min-w-[218px] p-2.5 bg-gray-700 bg-opacity-0 dark:border-gray-600 placeholder-gray-500 text-white focus:outline-none'
                 placeholder='lucidjoy'
+                onChange={(e) => handleUsernameChange(e)}
               />
             </div>
           </div>
 
           <button
             type='button'
-            class='text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:outline-none shadow-lg dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 mt-[30px] w-[120px]'
+            className='text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:outline-none shadow-lg dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 mt-[30px] w-[120px]'
           >
             Submit
           </button>
