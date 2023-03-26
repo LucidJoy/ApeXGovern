@@ -72,20 +72,6 @@ const Navbar = () => {
               <li>
                 <button
                   className={`block py-2 pl-3 pr-4  rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 text-[16px] ${
-                    currentPage === "events" ? "text-blue-500" : "text-gray-400"
-                  }`}
-                  onClick={() => {
-                    setCurrentPage("events");
-                    navigate.push("/events");
-                  }}
-                >
-                  Events
-                </button>
-              </li>
-
-              <li>
-                <button
-                  className={`block py-2 pl-3 pr-4  rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 text-[16px] ${
                     currentPage === "governance"
                       ? "text-blue-500"
                       : "text-gray-400"
@@ -96,6 +82,19 @@ const Navbar = () => {
                   }}
                 >
                   Governance
+                </button>
+              </li>
+              <li>
+                <button
+                  className={`block py-2 pl-3 pr-4  rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 text-[16px] ${
+                    currentPage === "events" ? "text-blue-500" : "text-gray-400"
+                  }`}
+                  onClick={() => {
+                    setCurrentPage("events");
+                    navigate.push("/events");
+                  }}
+                >
+                  Events
                 </button>
               </li>
             </ul>
