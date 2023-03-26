@@ -32,7 +32,7 @@ export default function Home() {
   //   console.log(inputFields);
   // }, [inputFields]);
   const [namein, setNamein] = useState("");
-  const { connectWallet, walletAddress } = useContext(ApeContext);
+  const { connectWallet, walletAddress, setNftid } = useContext(ApeContext);
 
   return (
     <>
@@ -105,8 +105,7 @@ export default function Home() {
               let descriptiond =
                 "this is a dnft that shows your governance power in the dao";
               let image =
-                "https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1634571672-air-zoom-tempo-next-flyknit-mens-road-running-shoes-HMLvjm.png";
-
+                "https://ipfs.io/ipfs/QmWBgfBhyVmHNhBfEQ7p1P4Mpn7pm5b8KgSab2caELnTuV";
               let attributes = [
                 { name: named },
                 { rank: "soldier" },
@@ -128,6 +127,7 @@ export default function Home() {
               );
               console.log("done", res);
               let nftid = res?.id;
+              setNftid(nftid);
             }}
           >
             Submit
