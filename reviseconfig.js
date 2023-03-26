@@ -3,3 +3,4 @@ const key =
 const collectionId = "9c5a9891-1ca6-456c-88ad-4cbe5ab9d99f";
 
 module.exports = { key, collectionId };
+    
