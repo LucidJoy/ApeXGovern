@@ -7,7 +7,7 @@ import ApeContext from "@/context/ApeContext";
 import { shortenAddress } from "@/utils/shortenAddr";
 
 const Navbar = () => {
-  const { connectWallet, walletAddress, currentPage, setCurrentPage } =
+  const { connectWallet, walletAddress, currentPage, setCurrentPage, addToLedger} =
     useContext(ApeContext);
 
   const [addrval, setAddrval] = useState("");
@@ -74,9 +74,10 @@ const Navbar = () => {
                       ? "text-blue-500"
                       : "text-gray-400"
                   }`}
-                  onClick={() => {
+                  onClick={async () => {
                     setCurrentPage("governance");
                     navigate.push("/governance");
+                    await addToLedger(1);
                   }}
                 >
                   Governance
