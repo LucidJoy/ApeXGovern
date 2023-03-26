@@ -64,17 +64,46 @@ const governance = () => {
           </p>
 
           <div className='flex flex-col gap-[10px]'>
-            <Task desc='Staked 50000 ape coin' points={250} tick={true} />
-            <Task
-              desc='Participated in 10% proposals'
-              points={500}
-              tick={true}
-            />
-            <Task
-              desc='Followed our social handles'
-              points={150}
-              tick={false}
-            />
+            <div className='flex flex-row gap-[10px]'>
+              <Task desc='Staked 50000 ape coin' points={250} tick={true} />
+
+              <button
+                type='button'
+                className='text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:outline-none font-semibold rounded-lg text-[13px] px-5 py-1 text-center w-fit '
+              >
+                Fulfill
+              </button>
+            </div>
+
+            <div className='flex flex-row gap-[10px]'>
+              <Task
+                desc='Participated in 10% proposals'
+                points={500}
+                tick={true}
+              />
+
+              <button
+                type='button'
+                className='text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:outline-none font-semibold rounded-lg text-[13px] px-5 py-1 text-center w-fit '
+              >
+                Fulfill
+              </button>
+            </div>
+
+            <div className='flex flex-row gap-[10px]'>
+              <Task
+                desc='Followed our social handles'
+                points={150}
+                tick={false}
+              />
+
+              <button
+                type='button'
+                className='text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:outline-none font-semibold rounded-lg text-[13px] px-5 py-1 text-center w-fit '
+              >
+                Fulfill
+              </button>
+            </div>
           </div>
         </div>
       </div>
